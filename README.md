@@ -1,0 +1,1 @@
+# scandiweb-junior-full-stack-test-assignment
