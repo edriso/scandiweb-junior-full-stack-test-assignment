@@ -24,7 +24,6 @@ class ProductsResolver implements Resolver
     public static function show($productId): array
     {
         $db = new Database();
-
         $product = $db->query('SELECT * FROM products where id = :id LIMIT 1', [
             "id" => $productId,
         ])->findOrFail();
