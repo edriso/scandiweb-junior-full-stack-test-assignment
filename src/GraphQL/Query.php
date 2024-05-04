@@ -21,7 +21,14 @@ class Query
                 ],
                 'products' => [
                     'type' => Type::listOf(Types\ProductType::define()),
-                    'resolve' => static fn () => Resolvers\ProductsResolver::resolve(),
+                    'resolve' => static fn () => Resolvers\ProductsResolver::index(),
+                ],
+                'product' => [
+                    'type' => Types\ProductType::define(),
+                    'args' => [
+                        'id' => ['type' => Type::nonNull(Type::string())],
+                    ],
+                    'resolve' => static fn ($rootValue, array $args) => Resolvers\ProductsResolver::show($args['id']),
                 ],
             ],
         ]);
