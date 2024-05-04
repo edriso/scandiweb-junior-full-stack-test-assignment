@@ -19,6 +19,10 @@ class Query
                     ],
                     'resolve' => static fn ($rootValue, array $args): string => $rootValue['prefix'] . $args['message'],
                 ],
+                'categories' => [
+                    'type' => Type::listOf(Types\Category::define()),
+                    'resolve' => static fn () => Resolvers\CategoriesResolver::index(),
+                ],
                 'products' => [
                     'type' => Type::listOf(Types\Product::define()),
                     'resolve' => static fn () => Resolvers\ProductsResolver::index(),
