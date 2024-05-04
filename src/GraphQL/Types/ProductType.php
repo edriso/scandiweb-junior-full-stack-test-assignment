@@ -6,7 +6,7 @@ use GraphQL\Type\Definition\Type;
 use App\Contracts\GraphQL\Type as IType;
 use GraphQL\Type\Definition\ObjectType;
 
-class Product implements IType
+class ProductType implements IType
 {
     public static function define(): ObjectType
     {
