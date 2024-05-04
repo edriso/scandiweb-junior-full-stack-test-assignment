@@ -6,7 +6,7 @@ define('BASE_PATH', dirname(__DIR__) . '/');
 
 Dotenv\Dotenv::createImmutable(BASE_PATH)->load();
 
-include_once BASE_PATH . 'src/Core/helpers.php';
+include_once BASE_PATH . 'src/helpers.php';
 
 $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
     $r->post('/graphql', [App\Controller\GraphQL::class, 'handle']);
