@@ -5,7 +5,7 @@ function Navbar() {
     <header className="flex items-center justify-between mb-14">
       <nav>
         <ul className="flex gap-6 uppercase">
-          {/* active: text-accent border-accent font-semibold */}
+          {/* active: text-primary border-primary font-semibold */}
           <li className="border-b-2 border-transparent pb-4">Women</li>
           <li>Men</li>
           <li>Kids</li>

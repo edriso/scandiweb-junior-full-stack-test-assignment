@@ -3,9 +3,21 @@
 @tailwind utilities;
 
 .cta {
-  @apply px-16 py-2 bg-accent text-white font-semibold uppercase;
+  @apply bg-primary text-white hover:bg-accent transition-colors ease-in-out duration-300;
 }
 
-.text-heading {
-  @apply font-semibold capitalize text-3xl;
+.btn-cta {
+  @apply cta uppercase px-10 py-3;
+}
+
+.heading-h1 {
+  @apply font-semibold text-3xl mb-6 capitalize;
+}
+
+.heading-h2 {
+  @apply text-2xl font-bold mb-4;
+}
+
+.heading-h3 {
+  @apply font-roboto font-bold mb-1 uppercase;
 }
