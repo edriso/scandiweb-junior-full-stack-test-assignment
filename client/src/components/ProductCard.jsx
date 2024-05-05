@@ -12,7 +12,7 @@ function ProductCard() {
           />
 
           <button className="cta opacity-0 group-hover:opacity-100 transition-opacity duration-500 absolute bottom-0 right-4 transform translate-y-1/2 p-3 rounded-full">
-            <Cart />
+            <Cart color="white" />
           </button>
         </div>
 
