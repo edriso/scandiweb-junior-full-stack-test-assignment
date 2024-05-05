@@ -33,6 +33,7 @@ function ProductAttributes({ item, children, className, isModalView = false }) {
             {attribute.values.map((value) =>
               attribute.type.toLowerCase() === 'color' ? (
                 <button
+                  type="button"
                   key={attribute.type + value}
                   className={`relative ${
                     isModalView ? 'w-5 h-5' : 'w-8 h-8'
@@ -43,6 +44,7 @@ function ProductAttributes({ item, children, className, isModalView = false }) {
                 </button>
               ) : (
                 <button
+                  type="button"
                   key={attribute.type + value}
                   className={`${
                     isModalView ? 'w-6 h-6 text-sm' : 'w-20 h-10'
