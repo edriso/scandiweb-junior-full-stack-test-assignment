@@ -7,5 +7,5 @@
 }
 
 .text-heading {
-  @apply font-semibold capitalize text-3xl mb-6;
+  @apply font-semibold capitalize text-3xl;
 }
