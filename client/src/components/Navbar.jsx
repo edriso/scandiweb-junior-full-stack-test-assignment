@@ -26,29 +26,39 @@ class Navbar extends Component {
   render() {
     const { showModal } = this.state;
 
-    // Dummy data for items in the cart
-    const items = [
+    const products = [
       {
-        id: 1,
-        name: 'Item 1',
-        price: 50,
+        id: 'huarache-x-stussy-le',
+        name: 'Nike Air Huarache Le',
+        prices: [
+          {
+            amount: 144.69,
+            currency: {
+              label: 'USD',
+              symbol: '$',
+            },
+          },
+        ],
         attributes: [
-          { type: 'size', values: ['XS', 'S', 'M', 'L'] },
-          { type: 'color', values: ['#FF0000', '#0000FF', '#00FF00'] },
+          {
+            id: 'Size',
+            items: [
+              { displayValue: '40', value: '40' },
+              { displayValue: '41', value: '41' },
+              { displayValue: '42', value: '42' },
+              { displayValue: '43', value: '43' },
+            ],
+          },
+        ],
+        description: '<p>Great sneakers for everyday use!</p>',
+        gallery: [
+          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087',
+          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_1_720x.jpg?v=1612816087',
+          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_3_720x.jpg?v=1612816087',
+          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_5_720x.jpg?v=1612816087',
+          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_4_720x.jpg?v=1612816087',
         ],
         quantity: 2,
-        image:
-          'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087',
-      },
-      {
-        id: 2,
-        name: 'Item 2',
-        price: 40,
-        attributes: [
-          { type: 'size', values: ['M', 'L'] },
-          { type: 'color', values: ['green', 'yellow'] },
-        ],
-        quantity: 1,
         image:
           'https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087',
       },
@@ -79,9 +89,9 @@ class Navbar extends Component {
           onClick={this.toggleModal}
         >
           <Cart />
-          {items.length > 0 && (
+          {products.length > 0 && (
             <div className="absolute flex items-center justify-center w-5 h-5 -mt-1 -mr-1 text-sm text-white rounded-full -top-1 -right-2 bg-text">
-              {items.reduce((total, item) => total + item.quantity, 0)}
+              {products.reduce((total, product) => total + product.quantity, 0)}
             </div>
           )}
         </div>
@@ -93,7 +103,7 @@ class Navbar extends Component {
           ></div>
         )}
 
-        {showModal && <CartModal items={items} />}
+        {showModal && <CartModal products={products} />}
       </header>
     );
   }

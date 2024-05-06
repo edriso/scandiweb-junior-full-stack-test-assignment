@@ -5,22 +5,28 @@ import ActionBtn from './ActionBtn';
 
 class CartModalItem extends Component {
   render() {
-    const { item = {} } = this.props;
+    const { product = {} } = this.props;
+
+    const productImage = product.gallery?.length ? product.gallery[0] : '';
 
     return (
       <div className="flex justify-between">
-        <ProductAttributes className="w-3/6" isModalView={true} item={item} />
+        <ProductAttributes
+          className="w-3/6"
+          isModalView={true}
+          product={product}
+        />
 
         <div className="flex flex-col items-center justify-between w-1/6">
           <ActionBtn text="+" onClick={() => console.log('Button clicked!')} />
-          <span>{item.quantity}</span>
+          <span>{product.quantity}</span>
           <ActionBtn text="-" onClick={() => console.log('Button clicked!')} />
         </div>
 
         <div className="w-2/6">
           <img
-            src={item.image}
-            alt={item.name}
+            src={productImage}
+            alt={product.name}
             className="object-cover w-full h-full"
           />
         </div>
@@ -30,7 +36,7 @@ class CartModalItem extends Component {
 }
 
 CartModalItem.propTypes = {
-  item: PropTypes.object,
+  product: PropTypes.object,
 };
 
 export default CartModalItem;
