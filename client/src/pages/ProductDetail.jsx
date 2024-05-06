@@ -55,7 +55,7 @@ class ProductDetail extends Component {
           <img
             src={product.gallery[0]}
             alt={product.name}
-            className="object-cover w-full max-h-96"
+            className="object-cover w-full max-h-screen"
           />
         </div>
 
