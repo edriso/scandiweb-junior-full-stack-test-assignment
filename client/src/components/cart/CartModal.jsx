@@ -11,10 +11,9 @@ class CartModal extends Component {
         <h2 className="mb-6">
           <span className="font-bold">My Bag</span>
           {!!items.length &&
-            `, ${items.reduce(
-              (total, item) => total + item.quantity,
-              0
-            )} items`}
+            `, ${items.reduce((total, item) => total + item.quantity, 0)} item${
+              items.length > 1 ? 's' : ''
+            }`}
         </h2>
 
         {items.length === 0 ? (
