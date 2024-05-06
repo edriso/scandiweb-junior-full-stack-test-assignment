@@ -35,7 +35,7 @@ class ErrorScreen extends Component {
 
 ErrorScreen.propTypes = {
   error: PropTypes.shape({
-    status: PropTypes.number.isRequired,
+    status: PropTypes.number,
   }),
 };
 
