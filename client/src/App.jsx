@@ -1,5 +1,12 @@
+import { Component } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { Categories, ErrorScreen, HomeLayout, ProductDetail } from './pages';
+
+class App extends Component {
+  render() {
+    return <RouterProvider router={router}></RouterProvider>;
+  }
+}
 
 const router = createBrowserRouter([
   {
@@ -18,9 +25,5 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-function App() {
-  return <RouterProvider router={router}></RouterProvider>;
-}
 
 export default App;
