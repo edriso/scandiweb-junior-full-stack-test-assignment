@@ -54,6 +54,30 @@ CREATE TABLE prices (
     CONSTRAINT unique_product_price_currency UNIQUE (product_id, currency)
 );
 
+CREATE TABLE orders (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    total_amount DECIMAL(10, 2) NOT NULL,
+    total_currency VARCHAR(50) NOT NULL,
+    status ENUM('pending', 'processing', 'shipped', 'delivered') NOT NULL DEFAULT 'pending',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+CREATE TABLE order_items (
+    id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id BIGINT UNSIGNED NOT NULL,
+    product_id VARCHAR(255),
+    product_name VARCHAR(255) NOT NULL,
+    attribute_values JSON NOT NULL,
+    quantity INT UNSIGNED DEFAULT 1,
+    paid_amount DECIMAL(10, 2) NOT NULL,
+    paid_currency VARCHAR(50) NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE SET NULL
+);
+
 -- INSERTING DATA --
 INSERT INTO categories (name) VALUES
 ('all'),
@@ -127,6 +151,16 @@ INSERT INTO prices (amount, currency, product_id) VALUES
 (1000.76, 'USD', 'apple-iphone-12-pro'),
 (300, 'USD', 'apple-airpods-pro'),
 (120.57, 'USD', 'apple-airtag');
+
+INSERT INTO orders (total_amount, total_currency) VALUES (2000.00, 'USD');
+
+SET @order_id = LAST_INSERT_ID();
+
+INSERT INTO order_items (order_id, product_id, product_name, attribute_values, quantity, paid_amount, paid_currency)
+VALUES 
+(@order_id, 'huarache-x-stussy-le', 'Nike Air Huarache Le', '{"Size": "42", "Color": "Black"}', 2, 289.38, 'USD'),
+(@order_id, 'ps-5', 'PlayStation 5', '{"Color": "Black", "Capacity": "512G"}', 1, 844.027, 'USD'),
+(@order_id, 'apple-imac-2021', 'iMac 2021', '{"Capacity": "512GB", "With USB 3 ports": "Yes", "Touch ID in keyboard": "No"}', 1, 1600.00, 'USD');
 
 -- TESTING
 SELECT * FROM products;
