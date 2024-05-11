@@ -7,7 +7,8 @@ class CartModal extends Component {
     const { products = [] } = this.props;
 
     const totalPrice = products.reduce(
-      (total, product) => total + product.prices[0]?.amount * product.quantity,
+      (total, product) =>
+        total + parseFloat(product.prices[0]?.amount) * product.quantity,
       0
     );
 

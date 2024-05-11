@@ -60,7 +60,7 @@ ProductCard.propTypes = {
     brand: PropTypes.string.isRequired,
     prices: PropTypes.arrayOf(
       PropTypes.shape({
-        amount: PropTypes.number.isRequired,
+        amount: PropTypes.string.isRequired,
         currency: PropTypes.shape({
           label: PropTypes.string.isRequired,
           symbol: PropTypes.string.isRequired,
