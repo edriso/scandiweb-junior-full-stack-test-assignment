@@ -30,7 +30,7 @@ function NavigationMenu() {
             <li key={category}>
               <Link
                 to={`?categories=${category}`}
-                className={`pb-4 border-b-2 ${
+                className={`block pb-4 border-b-2 ${
                   isSelected
                     ? 'nav-active'
                     : 'border-transparent hover:text-primary'
