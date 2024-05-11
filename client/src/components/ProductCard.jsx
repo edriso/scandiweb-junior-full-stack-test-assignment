@@ -20,7 +20,7 @@ class ProductCard extends Component {
                   className="object-cover w-full h-auto"
                 />
                 {!product.inStock && (
-                  <div className="absolute inset-0 flex items-center justify-center px-2 py-1 text-2xl uppercase bg-white bg-opacity-50 text-muted">
+                  <div className="absolute inset-0 flex items-center justify-center px-2 py-1 text-2xl uppercase bg-white bg-opacity-70 text-muted">
                     Out of Stock
                   </div>
                 )}
