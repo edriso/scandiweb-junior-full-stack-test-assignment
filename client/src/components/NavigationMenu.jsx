@@ -29,7 +29,7 @@ function NavigationMenu() {
           return (
             <li key={category}>
               <Link
-                to={`?categories=${category}`}
+                to={`/?categories=${category}`}
                 className={`block pb-4 border-b-2 ${
                   isSelected
                     ? 'nav-active'
