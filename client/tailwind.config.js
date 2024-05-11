@@ -9,7 +9,7 @@ export default {
       },
       colors: {
         primary: 'hsl(136, 53%, 59%)',
-        accent: 'hsl(18, 80%, 55%)',
+        accent: 'hsl(136, 53%, 45%)',
         text: 'hsl(216, 8%, 12%)',
       },
     },
