@@ -15,9 +15,7 @@ function NavigationMenu() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const category = params.get('categories');
-    if (category) {
-      setSelectedCategory(category);
-    }
+    setSelectedCategory(category ?? 'all');
   }, [location.search, setSelectedCategory]);
 
   return (

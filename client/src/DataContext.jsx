@@ -6,7 +6,7 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [categoriesData, setCategoriesData] = useState([]);
   const [productsData, setProductsData] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   return (
     <DataContext.Provider
