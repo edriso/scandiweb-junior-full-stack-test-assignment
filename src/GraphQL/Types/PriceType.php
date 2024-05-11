@@ -13,7 +13,7 @@ class PriceType implements IType
         return new ObjectType([
             'name' => 'Price',
             'fields' => [
-                'amount' => Type::float(),
+                'amount' => Type::string(),
                 'currency' => CurrencyType::define(),
             ],
         ]);
