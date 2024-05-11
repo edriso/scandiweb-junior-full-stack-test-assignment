@@ -2,9 +2,8 @@ import { Component, useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 import router from './router';
-import { getCategoriesQuery, getProductsQuery } from './GraphQl/Queries';
+import { getCategoriesQuery, getProductsQuery } from './graphql/queries';
 import { DataProvider, useDataContext } from './DataContext';
-import { ErrorScreen } from './pages';
 import { Loading } from './components';
 
 class App extends Component {
@@ -39,7 +38,11 @@ function FetchData() {
   }, [fetchCategories, fetchProducts]);
 
   if (categoriesError || productsError) {
-    return <ErrorScreen />;
+    return (
+      <p className="my-8 font-semibold text-center text-red-500">
+        Something went wrong
+      </p>
+    );
   }
 
   if (categoriesLoading || productsLoading) {
