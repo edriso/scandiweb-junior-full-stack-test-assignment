@@ -22,9 +22,7 @@ class ErrorScreen extends Component {
 }
 
 ErrorScreen.propTypes = {
-  error: PropTypes.shape({
-    status: PropTypes.number,
-  }),
+  error: PropTypes.object,
 };
 
 export default withRouter(ErrorScreen);
