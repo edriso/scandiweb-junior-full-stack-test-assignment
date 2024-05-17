@@ -1,4 +1,4 @@
-import { ProductCard, Spinner } from '../components';
+import { ProductCard } from '../components';
 import { useDataContext } from '../DataContext';
 
 function Products() {
@@ -8,9 +8,7 @@ function Products() {
     <main className="mt-14">
       <h1 className="heading-h1 !mb-16 !uppercase">{selectedCategory}</h1>
 
-      {!productsData.length ? (
-        <Spinner />
-      ) : (
+      {!!productsData.length && (
         <section className="flex flex-wrap -mx-2 gap-y-8">
           {productsData.map((product) => (
             <ProductCard key={product.id} product={product} />
