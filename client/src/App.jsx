@@ -18,7 +18,8 @@ class App extends Component {
 }
 
 function FetchData() {
-  const { setCategoriesData, setProductsData } = useDataContext();
+  const { setCategoriesData, setProductsData, selectedCategory } =
+    useDataContext();
 
   const [
     fetchCategories,
@@ -33,9 +34,12 @@ function FetchData() {
     });
 
   useEffect(() => {
+    const category = new URLSearchParams(location.search).get('category');
+    console.log(category);
+
     fetchCategories();
-    fetchProducts();
-  }, [fetchCategories, fetchProducts]);
+    fetchProducts({ variables: { category } });
+  }, [fetchCategories, fetchProducts, selectedCategory]);
 
   if (categoriesError || productsError) {
     return (
