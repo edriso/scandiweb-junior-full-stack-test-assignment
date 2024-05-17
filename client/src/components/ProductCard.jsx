@@ -12,7 +12,7 @@ function ProductCard({ product = {} }) {
       <div className="p-4 overflow-hidden transition-shadow duration-500 hover:shadow-xl group">
         <div className="relative mb-6">
           <Link to={`/products/${product.id}`}>
-            <div style={{ position: 'relative' }}>
+            <div className="relative min-h-52">
               <img
                 src={product.gallery[0] ?? searchingImg}
                 alt={product.name}
