@@ -49,10 +49,16 @@ class ProductsResolver implements Resolver
 
         // Fetch related prices for the product
         $prices = $db->query(
-            'SELECT p.amount, c.label , c.symbol 
-        FROM prices p
-        JOIN currencies c ON p.currency = c.label
-        WHERE p.product_id = :productId',
+            'SELECT 
+                p.amount, c.label , c.symbol 
+            FROM 
+                prices p
+            JOIN
+                currencies c
+            ON
+                p.currency = c.label
+            WHERE
+                p.product_id = :productId',
             [
                 'productId' => $product['id'],
             ]
@@ -85,7 +91,9 @@ class ProductsResolver implements Resolver
                 pa.attribute_id = a.id 
             WHERE 
                 product_id = :productId',
-            ['productId' => $product['id']]
+            [
+                'productId' => $product['id'],
+            ]
         )->get();
 
         foreach ($items as $item) {
@@ -94,7 +102,7 @@ class ProductsResolver implements Resolver
             // If attribute not yet added, initialize it
             if (!isset($attributes[$attributeId])) {
                 $attributes[$attributeId] = [
-                    'id' => $item['attribute_id'],
+                    'id' => $attributeId,
                     'name' => $item['attribute_name'],
                     'type' => $item['attribute_type'],
                     'items' => [],
