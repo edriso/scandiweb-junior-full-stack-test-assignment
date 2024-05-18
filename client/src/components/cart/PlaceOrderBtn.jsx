@@ -3,9 +3,11 @@ import { toast } from 'react-toastify';
 import { useMutation } from '@apollo/client';
 import { PLACE_ORDER } from '../../graphql/mutations';
 import { Spinner } from '../';
+import { useDataContext } from '../../DataContext';
 
 function PlaceOrderBtn({ className }) {
   const [placeOrder, { loading }] = useMutation(PLACE_ORDER);
+  const { emptyCart } = useDataContext();
 
   const handlePlaceOrder = async () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -32,11 +34,24 @@ function PlaceOrderBtn({ className }) {
         variables: { orderInput: orderInput },
       });
 
-      console.log(data);
-      // toast.success(`Order placed successfully! Order ID: ${data.placeOrder.id}`);
-      // localStorage.removeItem('cartItems');
+      emptyCart();
+      toast.success(data.placeOrder);
     } catch (err) {
-      console.error('Error placing order:', err);
+      if (err.graphQLErrors && err.graphQLErrors.length > 0) {
+        const errorMessage = err.graphQLErrors[0].message;
+        return toast.error(`Error placing order: ${errorMessage}`);
+      }
+
+      if (
+        err.networkError &&
+        err.networkError.result &&
+        err.networkError.result.error
+      ) {
+        const errorMessage = err.networkError.result.error;
+        return toast.error(`Error placing order: ${errorMessage}`);
+      }
+
+      toast.error('Error placing order. Please try again later.');
     }
   };
 
