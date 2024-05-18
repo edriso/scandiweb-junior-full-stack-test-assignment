@@ -95,7 +95,7 @@ const ProductAttributes = ({
                     handleAttributeClick(attributeSet.id, attribute)
                   }
                 >
-                  <div className="absolute inset-0 border border-white"></div>
+                  <div className="absolute inset-0 border border-gray-200"></div>
                 </button>
               ) : (
                 <button
