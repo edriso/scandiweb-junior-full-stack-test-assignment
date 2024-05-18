@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
 import CartModalItem from './CartModalItem';
-import { useDataContext } from '../../DataContext';
+import PlaceOrderBtn from './PlaceOrderBtn';
 
 function CartModal({ cartItems = [] }) {
-  const { placeOrder } = useDataContext();
-
   const totalPrice = cartItems
     .reduce(
       (total, item) =>
@@ -43,13 +41,7 @@ function CartModal({ cartItems = [] }) {
               </div>
             </div>
 
-            <button
-              type="button"
-              className="w-full mt-8 btn-cta"
-              onClick={placeOrder}
-            >
-              Place Order
-            </button>
+            <PlaceOrderBtn className="w-full mt-8" />
           </div>
         </>
       )}
