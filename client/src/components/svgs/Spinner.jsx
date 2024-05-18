@@ -1,11 +1,16 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Spinner extends Component {
   render() {
+    const { className } = this.props;
+
     return (
       <svg
         aria-hidden="true"
-        className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary"
+        className={`w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-primary${
+          className ? ' ' + className : ''
+        }`}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -22,5 +27,9 @@ class Spinner extends Component {
     );
   }
 }
+
+Spinner.propTypes = {
+  className: PropTypes.string,
+};
 
 export default Spinner;
