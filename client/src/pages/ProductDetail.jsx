@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { getProductQuery } from '../graphql/queries';
+import { GET_SINGLE_PRODUCT } from '../graphql/queries';
 import {
   Error,
   Loading,
@@ -12,7 +12,7 @@ import ErrorScreen from './ErrorScreen';
 function ProductDetail() {
   const { id } = useParams();
 
-  const { data, loading, error } = useQuery(getProductQuery, {
+  const { data, loading, error } = useQuery(GET_SINGLE_PRODUCT, {
     variables: { id },
   });
 

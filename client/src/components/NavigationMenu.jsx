@@ -2,7 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useDataContext } from '../DataContext';
 import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
-import { getProductsQuery } from '../graphql/queries';
+import { GET_PRODUCTS } from '../graphql/queries';
 
 function NavigationMenu() {
   const location = useLocation();
@@ -15,7 +15,7 @@ function NavigationMenu() {
     setProductsData,
   } = useDataContext();
 
-  const [fetchProducts] = useLazyQuery(getProductsQuery, {
+  const [fetchProducts] = useLazyQuery(GET_PRODUCTS, {
     onCompleted: (data) => setProductsData(data.products),
   });
 

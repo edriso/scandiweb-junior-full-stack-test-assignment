@@ -2,7 +2,7 @@ import { Component, useEffect } from 'react';
 import { RouterProvider } from 'react-router-dom';
 import { useLazyQuery } from '@apollo/client';
 import router from './router';
-import { getCategoriesAndProductsQuery } from './graphql/queries';
+import { GET_CATEGORIES_AND_PRODUCTS } from './graphql/queries';
 import { DataProvider, useDataContext } from './DataContext';
 import { Loading } from './components';
 
@@ -21,7 +21,7 @@ function FetchData() {
   const { setCategoriesData, setProductsData } = useDataContext();
 
   const [fetchData, { loading, error }] = useLazyQuery(
-    getCategoriesAndProductsQuery,
+    GET_CATEGORIES_AND_PRODUCTS,
     {
       onCompleted: (data) => {
         setCategoriesData(data.categories);
