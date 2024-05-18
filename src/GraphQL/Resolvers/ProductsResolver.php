@@ -3,9 +3,8 @@
 namespace App\GraphQL\Resolvers;
 
 use App\Database;
-use App\Contracts\GraphQL\Resolver;
 
-class ProductsResolver implements Resolver
+class ProductsResolver
 {
     public static function index(string $category = null): array
     {
