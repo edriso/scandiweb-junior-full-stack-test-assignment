@@ -27,7 +27,7 @@ function CartModal({ cartItems = [] }) {
         <p className="mt-2 text-gray-500">Your bag is empty.</p>
       ) : (
         <>
-          <div className="space-y-8 overflow-y-auto max-h-80">
+          <div className="py-4 space-y-8 overflow-y-auto max-h-80">
             {cartItems.map((item) => (
               <CartModalItem key={item.id} item={item} />
             ))}
