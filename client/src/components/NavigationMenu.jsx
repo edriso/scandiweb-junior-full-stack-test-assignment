@@ -21,13 +21,11 @@ function NavigationMenu() {
 
   useEffect(() => {
     setCategories(categoriesData.map((category) => category.name));
-  }, [categoriesData]);
 
-  useEffect(() => {
     const category = new URLSearchParams(location.search).get('category');
-    setSelectedCategory(category ?? 'all');
+    setSelectedCategory(category ?? categoriesData[0]?.name);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [categoriesData]);
 
   const handleCategoryChange = (category) => {
     fetchProducts({ variables: { category } });
