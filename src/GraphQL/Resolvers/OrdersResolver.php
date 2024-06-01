@@ -2,85 +2,69 @@
 
 namespace App\GraphQL\Resolvers;
 
+use App\Models\Order;
 use App\Database;
+use App\Models\OrderItem;
 
 class OrdersResolver
 {
     public static function store(array $args): string
     {
-        // validate required fields
-        if (!isset($args['items']) || empty($args['items'])) {
+        if (empty($args['items'])) {
             abort(400, 'Items are required');
         }
 
-        // initialize Database connection
         $db = new Database();
-
-        // start transaction
         $db->beginTransaction();
 
         try {
-            // create the order and get the order ID
-            $orderId = self::createOrder($db);
+            $orderResult = Order::create($db);
+            if (!$orderResult['success']) {
+                abort(500, $orderResult['error']);
+            }
+            $orderId = $orderResult['orderId'];
 
-            // initialize total amount and currency
             $totalAmount = 0;
             $currency = null;
 
             foreach ($args['items'] as $item) {
-                self::validateItem($db, $item); // validate item attributes
+                self::validateItemAttributes($db, $item);
 
-                // calculate paid amount and get product details
                 $productDetails = self::calculatePaidAmount($db, $item);
 
-                // insert order item
-                self::insertOrderItem($db, $orderId, $productDetails);
-
-                // update total amount and set currency if not set
+                $insertItemResult = OrderItem::insertItem($db, $orderId, $productDetails);
+                if (!$insertItemResult['success']) {
+                    abort(500, $insertItemResult['error']);
+                }
                 $totalAmount += $productDetails['paidAmount'];
                 if ($currency === null) {
                     $currency = $productDetails['paidCurrency'];
                 }
             }
 
-            // update order with total amount and currency
-            self::updateOrder($db, $orderId, $totalAmount, $currency);
+            $updateOrderResult = Order::update($db, $orderId, $totalAmount, $currency);
+            if (!$updateOrderResult['success']) {
+                abort(500, $updateOrderResult['error']);
+            }
 
-            // commit transaction
             $db->commit();
 
             return "Order placed successfully! Order ID: $orderId";
         } catch (\Exception $e) {
-            // rollback transaction if any error occurs
             $db->rollback();
             throw $e;
         }
     }
 
-    private static function createOrder(Database $db): int
-    {
-        // insert order into orders table with placeholder values
-        $result = $db->query('INSERT INTO orders (total_amount, total_currency) VALUES (?, ?)', [0, 'USD']);
-
-        if (!$result) {
-            abort(500, 'Failed to create order');
-        }
-
-        // return the last inserted order ID
-        return $db->getLastInsertId();
-    }
-
-    private static function validateItem(Database $db, array $item): void
+    private static function validateItemAttributes(Database $db, array $item): void
     {
         $productId = $item['productId'];
-        // validate productId
+
         if (!isset($productId)) {
             abort(400, 'Product ID is required');
         }
 
-        // check if the product is in stock
-        $product = $db->query('SELECT inStock, name FROM products WHERE id = ?', [$productId])
-            ->fetch();
+        $product = $db->query('SELECT inStock, name FROM products WHERE id = ?', [$productId])->fetch();
 
         if (!$product) {
             abort(400, 'Product not found');
@@ -90,31 +74,22 @@ class OrdersResolver
             abort(400, "Unfortunately, '{$product['name']}' is out of stock. Please check back later.");
         }
 
-        // validate attributeValues
         $attributeCount = $db->query(
             'SELECT COUNT(DISTINCT attribute_id) FROM product_attributes WHERE product_id = ?',
             [$productId]
         )->fetchColumn();
 
-        if (
-            !isset($item['attributeValues']) ||
-            $attributeCount !== count($item['attributeValues'])
-        ) {
+        if (!isset($item['attributeValues']) || $attributeCount !== count($item['attributeValues'])) {
             abort(400, 'Attribute values are required');
         }
 
-        // iterate over attributeValues and validate each attribute
+        // iterate over attributeValues and validate each attribute exists
         foreach ($item['attributeValues'] as $attribute) {
-            // query the database to check if the attribute exists
             $result = $db->query(
                 'SELECT COUNT(*) FROM product_attributes WHERE id = ? AND value = ? LIMIT 1',
-                [
-                    $attribute['id'],
-                    $attribute['value']
-                ]
+                [$attribute['id'], $attribute['value']]
             );
 
-            // check if attribute exists
             if ($result->fetchColumn() == 0) {
                 abort(400, "Oops! '{$product['name']}' with '{$attribute['value']}' attribute does not exist or is invalid. Please check and try again.");
             }
@@ -149,46 +124,13 @@ class OrdersResolver
         }
         $attributeValuesJson = json_encode([$formattedAttributeValues]);
 
-
         return [
             'productId' => $productId,
             'productName' => $product['name'],
             'attributeValues' => $attributeValuesJson,
             'quantity' => $quantity,
             'paidAmount' => $paidAmount,
-            'paidCurrency' => $paidCurrency
+            'paidCurrency' => $paidCurrency,
         ];
-    }
-
-    private static function insertOrderItem(Database $db, int $orderId, array $productDetails): void
-    {
-        $result = $db->query(
-            'INSERT INTO order_items (order_id, product_id, product_name, attribute_values, quantity, paid_amount, paid_currency) VALUES (?, ?, ?, ?, ?, ?, ?)',
-            [
-                $orderId,
-                $productDetails['productId'],
-                $productDetails['productName'],
-                $productDetails['attributeValues'],
-                $productDetails['quantity'],
-                $productDetails['paidAmount'],
-                $productDetails['paidCurrency']
-            ]
-        );
-
-        if (!$result) {
-            abort(500, 'Failed to insert order item');
-        }
-    }
-
-    private static function updateOrder(Database $db, int $orderId, float $totalAmount, string $currency): void
-    {
-        $result = $db->query(
-            'UPDATE orders SET total_amount = ?, total_currency = ? WHERE id = ?',
-            [$totalAmount, $currency, $orderId]
-        );
-
-        if (!$result) {
-            abort(500, 'Failed to update order');
-        }
     }
 }
