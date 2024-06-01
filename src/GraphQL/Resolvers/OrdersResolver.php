@@ -8,50 +8,50 @@ class OrdersResolver
 {
     public static function store(array $args): string
     {
-        // Validate required fields
+        // validate required fields
         if (!isset($args['items']) || empty($args['items'])) {
-            abort(400, 'Items are required.');
+            abort(400, 'Items are required');
         }
 
-        // Initialize Database connection
+        // initialize Database connection
         $db = new Database();
 
-        // Start transaction
+        // start transaction
         $db->beginTransaction();
 
         try {
-            // Create the order and get the order ID
+            // create the order and get the order ID
             $orderId = self::createOrder($db);
 
-            // Initialize total amount and currency
+            // initialize total amount and currency
             $totalAmount = 0;
             $currency = null;
 
             foreach ($args['items'] as $item) {
-                self::validateItem($db, $item); // Validate item attributes
+                self::validateItem($db, $item); // validate item attributes
 
-                // Calculate paid amount and get product details
+                // calculate paid amount and get product details
                 $productDetails = self::calculatePaidAmount($db, $item);
 
-                // Insert order item
+                // insert order item
                 self::insertOrderItem($db, $orderId, $productDetails);
 
-                // Update total amount and set currency if not set
+                // update total amount and set currency if not set
                 $totalAmount += $productDetails['paidAmount'];
                 if ($currency === null) {
                     $currency = $productDetails['paidCurrency'];
                 }
             }
 
-            // Update order with total amount and currency
+            // update order with total amount and currency
             self::updateOrder($db, $orderId, $totalAmount, $currency);
 
-            // Commit transaction
+            // commit transaction
             $db->commit();
 
             return "Order placed successfully! Order ID: $orderId";
         } catch (\Exception $e) {
-            // Rollback transaction if any error occurs
+            // rollback transaction if any error occurs
             $db->rollback();
             throw $e;
         }
@@ -59,38 +59,38 @@ class OrdersResolver
 
     private static function createOrder(Database $db): int
     {
-        // Insert order into orders table with placeholder values
+        // insert order into orders table with placeholder values
         $result = $db->query('INSERT INTO orders (total_amount, total_currency) VALUES (?, ?)', [0, 'USD']);
 
         if (!$result) {
-            abort(500, 'Failed to create order.');
+            abort(500, 'Failed to create order');
         }
 
-        // Return the last inserted order ID
+        // return the last inserted order ID
         return $db->getLastInsertId();
     }
 
     private static function validateItem(Database $db, array $item): void
     {
         $productId = $item['productId'];
-        // Validate productId
+        // validate productId
         if (!isset($productId)) {
-            abort(400, 'Product ID is required.');
+            abort(400, 'Product ID is required');
         }
 
-        // Check if the product is in stock
+        // check if the product is in stock
         $product = $db->query('SELECT inStock, name FROM products WHERE id = ?', [$productId])
             ->fetch();
 
         if (!$product) {
-            abort(400, 'Product not found.');
+            abort(400, 'Product not found');
         }
 
         if (!$product['inStock']) {
             abort(400, "Unfortunately, '{$product['name']}' is out of stock. Please check back later.");
         }
 
-        // Validate attributeValues
+        // validate attributeValues
         $attributeCount = $db->query(
             'SELECT COUNT(DISTINCT attribute_id) FROM product_attributes WHERE product_id = ?',
             [$productId]
@@ -100,12 +100,12 @@ class OrdersResolver
             !isset($item['attributeValues']) ||
             $attributeCount !== count($item['attributeValues'])
         ) {
-            abort(400, 'Attribute values are required.');
+            abort(400, 'Attribute values are required');
         }
 
-        // Iterate over attributeValues and validate each attribute
+        // iterate over attributeValues and validate each attribute
         foreach ($item['attributeValues'] as $attribute) {
-            // Query the database to check if the attribute exists
+            // query the database to check if the attribute exists
             $result = $db->query(
                 'SELECT COUNT(*) FROM product_attributes WHERE id = ? AND value = ? LIMIT 1',
                 [
@@ -114,7 +114,7 @@ class OrdersResolver
                 ]
             );
 
-            // Check if attribute exists
+            // check if attribute exists
             if ($result->fetchColumn() == 0) {
                 abort(400, "Oops! '{$product['name']}' with '{$attribute['value']}' attribute does not exist or is invalid. Please check and try again.");
             }
@@ -126,19 +126,18 @@ class OrdersResolver
         $productId = $item['productId'];
         $quantity = $item['quantity'] ?? 1;
 
-        // Get product name and price
         $productQuery = $db->query('SELECT name FROM products WHERE id = ?', [$productId]);
         $product = $productQuery->fetch();
 
         if (!$product) {
-            abort(400, 'Product not found.');
+            abort(400, 'Product not found');
         }
 
         $priceQuery = $db->query('SELECT amount, currency FROM prices WHERE product_id = ?', [$productId]);
         $price = $priceQuery->fetch();
 
         if (!$price) {
-            abort(500, 'Price not found for product.');
+            abort(500, 'Price not found for product');
         }
 
         $paidAmount = $price['amount'] * $quantity;
@@ -177,7 +176,7 @@ class OrdersResolver
         );
 
         if (!$result) {
-            abort(500, 'Failed to insert order item.');
+            abort(500, 'Failed to insert order item');
         }
     }
 
@@ -189,7 +188,7 @@ class OrdersResolver
         );
 
         if (!$result) {
-            abort(500, 'Failed to update order.');
+            abort(500, 'Failed to update order');
         }
     }
 }
