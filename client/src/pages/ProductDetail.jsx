@@ -20,7 +20,7 @@ function ProductDetail() {
     return error.networkError ? (
       <Error
         statusCode={error.networkError.statusCode}
-        message="Item not found"
+        message="Product not found"
       />
     ) : (
       <ErrorScreen />
