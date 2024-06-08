@@ -145,7 +145,7 @@ INSERT INTO currencies (label, symbol) VALUES
 INSERT INTO prices (amount, currency, product_id) VALUES
 (144.69, 'USD', 'huarache-x-stussy-le'),
 (518.47, 'USD', 'jacket-canada-goosee'),
-(844.027, 'USD', 'ps-5'),
+(844.02, 'USD', 'ps-5'),
 (333.99, 'USD', 'xbox-series-s'),
 (1600, 'USD', 'apple-imac-2021'),
 (1000.76, 'USD', 'apple-iphone-12-pro'),

@@ -34,7 +34,10 @@ function ProductDetail() {
   const { product } = data;
 
   return (
-    <main className="flex flex-col items-start mt-14 md:flex-row">
+    <main
+      className="flex flex-col items-start mt-14 md:flex-row"
+      data-testid={`product-${product.name.replace(/\s+/g, '-').toLowerCase()}`}
+    >
       <ProductImageCarousel images={product.gallery} alt={product.name} />
 
       <ProductAttributes className="md:w-1/3 md:pl-4" product={product} />
