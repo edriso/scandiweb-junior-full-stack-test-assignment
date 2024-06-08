@@ -87,7 +87,7 @@ INSERT INTO categories (name) VALUES
 INSERT INTO products (id, name, inStock, gallery, description, category, brand) VALUES
 ('huarache-x-stussy-le', 'Nike Air Huarache Le', true, '["https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_2_720x.jpg?v=1612816087","https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_1_720x.jpg?v=1612816087","https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_3_720x.jpg?v=1612816087","https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_5_720x.jpg?v=1612816087","https://cdn.shopify.com/s/files/1/0087/6193/3920/products/DD1381200_DEOA_4_720x.jpg?v=1612816087"]', '<p>Great sneakers for everyday use!</p>', 'clothes', 'Nike x Stussy'),
 ('jacket-canada-goosee', 'Jacket', true, '["https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016105/product-image/2409L_61.jpg","https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016107/product-image/2409L_61_a.jpg","https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016108/product-image/2409L_61_b.jpg","https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016109/product-image/2409L_61_c.jpg","https://images.canadagoose.com/image/upload/w_480,c_scale,f_auto,q_auto:best/v1576016110/product-image/2409L_61_d.jpg","https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058169/product-image/2409L_61_o.png","https://images.canadagoose.com/image/upload/w_1333,c_scale,f_auto,q_auto:best/v1634058159/product-image/2409L_61_p.png"]', '<p>Awesome winter jacket</p>', 'clothes', 'Canada Goose'),
-('ps-5', 'PlayStation 5', false, '["https://images-na.ssl-images-amazon.com/images/I/510VSJ9mWDL._SL1262_.jpg","https://images-na.ssl-images-amazon.com/images/I/610%2B69ZsKCL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/51iPoFwQT3L._SL1230_.jpg","https://images-na.ssl-images-amazon.com/images/I/61qbqFcvoNL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/51HCjA3rqYL._SL1230_.jpg"]', '<p>A good gaming console. Plays games of PS4! Enjoy if you can buy it mwahahahaha</p>', 'tech', 'Sony'),
+('ps-5', 'PlayStation 5', true, '["https://images-na.ssl-images-amazon.com/images/I/510VSJ9mWDL._SL1262_.jpg","https://images-na.ssl-images-amazon.com/images/I/610%2B69ZsKCL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/51iPoFwQT3L._SL1230_.jpg","https://images-na.ssl-images-amazon.com/images/I/61qbqFcvoNL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/51HCjA3rqYL._SL1230_.jpg"]', '<p>A good gaming console. Plays games of PS4! Enjoy if you can buy it mwahahahaha</p>', 'tech', 'Sony'),
 ('xbox-series-s', 'Xbox Series S 512GB', false, '["https://images-na.ssl-images-amazon.com/images/I/71vPCX0bS-L._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/71q7JTbRTpL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/71iQ4HGHtsL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/61IYrCrBzxL._SL1500_.jpg","https://images-na.ssl-images-amazon.com/images/I/61RnXmpAmIL._SL1500_.jpg"]', ' <div> <ul> <li><span>Hardware-beschleunigtes Raytracing macht dein Spiel noch realistischer</span></li> <li><span>Spiele Games mit bis zu 120 Bilder pro Sekunde</span></li> <li><span>Minimiere Ladezeiten mit einer speziell entwickelten 512GB NVMe SSD und wechsle mit Quick Resume nahtlos zwischen mehreren Spielen.</span></li> <li><span>Xbox Smart Delivery stellt sicher, dass du die beste Version deines Spiels spielst, egal, auf welcher Konsole du spielst</span></li> <li><span>Spiele deine Xbox One-Spiele auf deiner Xbox Series S weiter. Deine Fortschritte, Erfolge und Freundesliste werden automatisch auf das neue System übertragen.</span></li> <li><span>Erwecke deine Spiele und Filme mit innovativem 3D Raumklang zum Leben</span></li> <li><span>Der brandneue Xbox Wireless Controller zeichnet sich durch höchste Präzision, eine neue Share-Taste und verbesserte Ergonomie aus</span></li> <li><span>Ultra-niedrige Latenz verbessert die Reaktionszeit von Controller zum Fernseher</span></li> <li><span>Verwende dein Xbox One-Gaming-Zubehör -einschließlich Controller, Headsets und mehr</span></li> <li><span>Erweitere deinen Speicher mit der Seagate 1 TB-Erweiterungskarte für Xbox Series X (separat erhältlich) und streame 4K-Videos von Disney+, Netflix, Amazon, Microsoft Movies &amp; TV und mehr</span></li> </ul> </div>', 'tech', 'Microsoft'),
 ('apple-imac-2021', 'iMac 2021', true, '["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/imac-24-blue-selection-hero-202104?wid=904&hei=840&fmt=jpeg&qlt=80&.v=1617492405000"]', 'The new iMac!', 'tech', 'Apple'),
 ('apple-iphone-12-pro', 'iPhone 12 Pro', true, '["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=940&amp;hei=1112&amp;fmt=jpeg&amp;qlt=80&amp;.v=1604021663000"]', 'This is iPhone 12. Nothing else to say.', 'tech', 'Apple'),
@@ -95,48 +95,48 @@ INSERT INTO products (id, name, inStock, gallery, description, category, brand) 
 ('apple-airtag', 'AirTag', true, '["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/airtag-double-select-202104?wid=445&hei=370&fmt=jpeg&qlt=95&.v=1617761672000"]', ' <h1>Lose your knack for losing things.</h1> <p>AirTag is an easy way to keep track of your stuff. Attach one to your keys, slip another one in your backpack. And just like that, they’re on your radar in the Find My app. AirTag has your back.</p> ', 'tech', 'Apple');
 
 INSERT INTO attributes (id, name, type) VALUES
-('Size', 'Size', 'text'),
-('Color', 'Color', 'swatch'),
-('Capacity', 'Capacity', 'text'),
+('size', 'size', 'text'),
+('color', 'color', 'swatch'),
+('capacity', 'capacity', 'text'),
 ('With USB 3 ports', 'With USB 3 ports', 'text'),
 ('Touch ID in keyboard', 'Touch ID in keyboard', 'text');
 
 INSERT INTO product_attributes (id, product_id, attribute_id, displayValue, value) VALUES
-('huarache-x-stussy-le-size-40', 'huarache-x-stussy-le', 'Size', '40', '40'),
-('huarache-x-stussy-le-size-41', 'huarache-x-stussy-le', 'Size', '41', '41'),
-('huarache-x-stussy-le-size-42', 'huarache-x-stussy-le', 'Size', '42', '42'),
-('huarache-x-stussy-le-size-43', 'huarache-x-stussy-le', 'Size', '43', '43'),
-('jacket-canada-goosee-size-Small', 'jacket-canada-goosee', 'Size', 'Small', 'S'),
-('jacket-canada-goosee-size-Medium', 'jacket-canada-goosee', 'Size', 'Medium', 'M'),
-('jacket-canada-goosee-size-Large', 'jacket-canada-goosee', 'Size', 'Large', 'L'),
-('jacket-canada-goosee-size-Extra Large', 'jacket-canada-goosee', 'Size', 'Extra Large', 'XL'),
-('ps-5-color-Green', 'ps-5', 'Color', 'Green', '#44FF03'),
-('ps-5-color-Cyan', 'ps-5', 'Color', 'Cyan', '#03FFF7'),
-('ps-5-color-Blue', 'ps-5', 'Color', 'Blue', '#030BFF'),
-('ps-5-color-Black', 'ps-5', 'Color', 'Black', '#000000'),
-('ps-5-color-White', 'ps-5', 'Color', 'White', '#FFFFFF'),
-('ps-5-capacity-512G', 'ps-5', 'Capacity', '512G', '512G'),
-('ps-5-capacity-1T', 'ps-5', 'Capacity', '1T', '1T'),
-('xbox-series-s-color-Green', 'xbox-series-s', 'Color', 'Green', '#44FF03'),
-('xbox-series-s-color-Cyan', 'xbox-series-s', 'Color', 'Cyan', '#03FFF7'),
-('xbox-series-s-color-Blue', 'xbox-series-s', 'Color', 'Blue', '#030BFF'),
-('xbox-series-s-color-Black', 'xbox-series-s', 'Color', 'Black', '#000000'),
-('xbox-series-s-color-White', 'xbox-series-s', 'Color', 'White', '#FFFFFF'),
-('xbox-series-s-capacity-512G', 'xbox-series-s', 'Capacity', '512G', '512G'),
-('xbox-series-s-capacity-1T', 'xbox-series-s', 'Capacity', '1T', '1T'),
-('apple-imac-2021-capacity-256GB', 'apple-imac-2021', 'Capacity', '256GB', '256GB'),
-('apple-imac-2021-capacity-512GB', 'apple-imac-2021', 'Capacity', '512GB', '512GB'),
+('huarache-x-stussy-le-size-40', 'huarache-x-stussy-le', 'size', '40', '40'),
+('huarache-x-stussy-le-size-41', 'huarache-x-stussy-le', 'size', '41', '41'),
+('huarache-x-stussy-le-size-42', 'huarache-x-stussy-le', 'size', '42', '42'),
+('huarache-x-stussy-le-size-43', 'huarache-x-stussy-le', 'size', '43', '43'),
+('jacket-canada-goosee-size-Small', 'jacket-canada-goosee', 'size', 'Small', 'S'),
+('jacket-canada-goosee-size-Medium', 'jacket-canada-goosee', 'size', 'Medium', 'M'),
+('jacket-canada-goosee-size-Large', 'jacket-canada-goosee', 'size', 'Large', 'L'),
+('jacket-canada-goosee-size-Extra Large', 'jacket-canada-goosee', 'size', 'Extra Large', 'XL'),
+('ps-5-color-Green', 'ps-5', 'color', 'Green', '#44FF03'),
+('ps-5-color-Cyan', 'ps-5', 'color', 'Cyan', '#03FFF7'),
+('ps-5-color-Blue', 'ps-5', 'color', 'Blue', '#030BFF'),
+('ps-5-color-Black', 'ps-5', 'color', 'Black', '#000000'),
+('ps-5-color-White', 'ps-5', 'color', 'White', '#FFFFFF'),
+('ps-5-capacity-512G', 'ps-5', 'capacity', '512G', '512G'),
+('ps-5-capacity-1T', 'ps-5', 'capacity', '1T', '1T'),
+('xbox-series-s-color-Green', 'xbox-series-s', 'color', 'Green', '#44FF03'),
+('xbox-series-s-color-Cyan', 'xbox-series-s', 'color', 'Cyan', '#03FFF7'),
+('xbox-series-s-color-Blue', 'xbox-series-s', 'color', 'Blue', '#030BFF'),
+('xbox-series-s-color-Black', 'xbox-series-s', 'color', 'Black', '#000000'),
+('xbox-series-s-color-White', 'xbox-series-s', 'color', 'White', '#FFFFFF'),
+('xbox-series-s-capacity-512G', 'xbox-series-s', 'capacity', '512G', '512G'),
+('xbox-series-s-capacity-1T', 'xbox-series-s', 'capacity', '1T', '1T'),
+('apple-imac-2021-capacity-256GB', 'apple-imac-2021', 'capacity', '256GB', '256GB'),
+('apple-imac-2021-capacity-512GB', 'apple-imac-2021', 'capacity', '512GB', '512GB'),
 ('apple-imac-2021-With USB 3 ports-Yes', 'apple-imac-2021', 'With USB 3 ports', 'Yes', 'Yes'),
 ('apple-imac-2021-With USB 3 ports-No', 'apple-imac-2021', 'With USB 3 ports', 'No', 'No'),
 ('apple-imac-2021-Touch ID in keyboard-Yes', 'apple-imac-2021', 'Touch ID in keyboard', 'Yes', 'Yes'),
 ('apple-imac-2021-Touch ID in keyboard-No', 'apple-imac-2021', 'Touch ID in keyboard', 'No', 'No'),
-('apple-iphone-12-pro-capacity-512G', 'apple-iphone-12-pro', 'Capacity', '512G', '512G'),
-('apple-iphone-12-pro-capacity-1T', 'apple-iphone-12-pro', 'Capacity', '1T', '1T'),
-('apple-iphone-12-pro-color-Green', 'apple-iphone-12-pro', 'Color', 'Green', '#44FF03'),
-('apple-iphone-12-pro-color-Cyan', 'apple-iphone-12-pro', 'Color', 'Cyan', '#03FFF7'),
-('apple-iphone-12-pro-color-Blue', 'apple-iphone-12-pro', 'Color', 'Blue', '#030BFF'),
-('apple-iphone-12-pro-color-Black', 'apple-iphone-12-pro', 'Color', 'Black', '#000000'),
-('apple-iphone-12-pro-color-White', 'apple-iphone-12-pro', 'Color', 'White', '#FFFFFF');
+('apple-iphone-12-pro-capacity-512G', 'apple-iphone-12-pro', 'capacity', '512G', '512G'),
+('apple-iphone-12-pro-capacity-1T', 'apple-iphone-12-pro', 'capacity', '1T', '1T'),
+('apple-iphone-12-pro-color-Green', 'apple-iphone-12-pro', 'color', 'Green', '#44FF03'),
+('apple-iphone-12-pro-color-Cyan', 'apple-iphone-12-pro', 'color', 'Cyan', '#03FFF7'),
+('apple-iphone-12-pro-color-Blue', 'apple-iphone-12-pro', 'color', 'Blue', '#030BFF'),
+('apple-iphone-12-pro-color-Black', 'apple-iphone-12-pro', 'color', 'Black', '#000000'),
+('apple-iphone-12-pro-color-White', 'apple-iphone-12-pro', 'color', 'White', '#FFFFFF');
 
 INSERT INTO currencies (label, symbol) VALUES
 ('USD', '$'),
@@ -158,9 +158,9 @@ SET @order_id = LAST_INSERT_ID();
 
 INSERT INTO order_items (order_id, product_id, product_name, attribute_values, quantity, paid_amount, paid_currency)
 VALUES 
-(@order_id, 'huarache-x-stussy-le', 'Nike Air Huarache Le', '{"Size": "42", "Color": "Black"}', 2, 289.38, 'USD'),
-(@order_id, 'ps-5', 'PlayStation 5', '{"Color": "Black", "Capacity": "512G"}', 1, 844.027, 'USD'),
-(@order_id, 'apple-imac-2021', 'iMac 2021', '{"Capacity": "512GB", "With USB 3 ports": "Yes", "Touch ID in keyboard": "No"}', 1, 1600.00, 'USD');
+(@order_id, 'huarache-x-stussy-le', 'Nike Air Huarache Le', '{"size": "42", "color": "Black"}', 2, 289.38, 'USD'),
+(@order_id, 'ps-5', 'PlayStation 5', '{"color": "Black", "capacity": "512G"}', 1, 844.027, 'USD'),
+(@order_id, 'apple-imac-2021', 'iMac 2021', '{"capacity": "512GB", "With USB 3 ports": "Yes", "Touch ID in keyboard": "No"}', 1, 1600.00, 'USD');
 
 -- TESTING
 SELECT * FROM products;
