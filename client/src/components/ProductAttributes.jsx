@@ -78,7 +78,7 @@ const ProductAttributes = ({
           className="mt-4"
           data-testid={`${
             isModalView ? 'cart-item' : 'product'
-          }-attribute-${attributeSet.name.replace(/\s+/g, '-').toLowerCase()}`}
+          }-attribute-${attributeSet.name.replace(/\s+/g, '-')}`}
         >
           <h3
             className={`${
