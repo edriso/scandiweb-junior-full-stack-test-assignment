@@ -1,11 +1,10 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDataContext } from '../DataContext';
 import { useEffect, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { GET_PRODUCTS } from '../graphql/queries';
 
 function NavigationMenu() {
-  const location = useLocation();
   const [categories, setCategories] = useState([]);
 
   const {
@@ -22,9 +21,8 @@ function NavigationMenu() {
   useEffect(() => {
     setCategories(categoriesData.map((category) => category.name));
 
-    const category = new URLSearchParams(location.search).get('category');
-    setSelectedCategory(category ?? categoriesData[0]?.name);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // const category = new URLSearchParams(location.search).get('category');
+    // setSelectedCategory(category ?? categoriesData[0]?.name);
   }, [categoriesData]);
 
   const handleCategoryChange = (category) => {
@@ -41,7 +39,8 @@ function NavigationMenu() {
           return (
             <li key={category}>
               <Link
-                to={`/?category=${category}`}
+                // to={`/?category=${category}`}
+                to={`/${category}`}
                 className={`block pb-4 border-b-2 ${
                   isSelected
                     ? 'nav-active'
