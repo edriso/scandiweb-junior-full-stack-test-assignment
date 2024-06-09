@@ -112,11 +112,10 @@ const ProductAttributes = ({
                   disabled={!product.inStock}
                   data-testid={`${
                     isModalView ? 'cart-item' : 'product'
-                  }-attribute-${attributeSet.name
-                    .replace(/\s+/g, '-')
-                    .toLowerCase()}-${attribute.displayValue
-                    .replace(/\s+/g, '-')
-                    .toLowerCase()}${
+                  }-attribute-${attributeSet.name.replace(
+                    /\s+/g,
+                    '-'
+                  )}-${attribute.displayValue.replace(/\s+/g, '-')}${
                     isAttributeValueSelected(attribute) ? '-selected' : ''
                   }`}
                 >
@@ -141,11 +140,10 @@ const ProductAttributes = ({
                   onClick={() => handleAttributeClick(attribute)}
                   data-testid={`${
                     isModalView ? 'cart-item' : 'product'
-                  }-attribute-${attributeSet.name
-                    .replace(/\s+/g, '-')
-                    .toLowerCase()}-${attribute.displayValue
-                    .replace(/\s+/g, '-')
-                    .toLowerCase()}${
+                  }-attribute-${attributeSet.name.replace(
+                    /\s+/g,
+                    '-'
+                  )}-${attribute.displayValue.replace(/\s+/g, '-')}${
                     isAttributeValueSelected(attribute) ? '-selected' : ''
                   }`}
                 >
