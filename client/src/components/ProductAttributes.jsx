@@ -112,11 +112,14 @@ const ProductAttributes = ({
                   disabled={!product.inStock}
                   data-testid={`${
                     isModalView ? 'cart-item' : 'product'
-                  }-attribute-${attributeSet.name.replace(
-                    /\s+/g,
-                    '-'
-                  )}-${attribute.displayValue.replace(/\s+/g, '-')}${
-                    isAttributeValueSelected(attribute) ? '-selected' : ''
+                  }-attribute-${attributeSet.name.replace(/\s+/g, '-')}-${
+                    isModalView
+                      ? attribute.displayValue.replace(/\s+/g, '-')
+                      : attribute.value
+                  }${
+                    isAttributeValueSelected(attribute) && isModalView
+                      ? '-selected'
+                      : ''
                   }`}
                 >
                   <div className="absolute inset-0 border border-gray-200"></div>
