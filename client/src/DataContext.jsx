@@ -5,7 +5,6 @@ import { toast } from 'react-toastify';
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  const [categoriesData, setCategoriesData] = useState([]);
   const [productsData, setProductsData] = useState([]);
   const [cartItems, setCartItems] = useState(
     JSON.parse(localStorage.getItem('cartItems')) || []
@@ -146,8 +145,6 @@ export const DataProvider = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
-        categoriesData,
-        setCategoriesData,
         productsData,
         setProductsData,
         selectedCategory,
